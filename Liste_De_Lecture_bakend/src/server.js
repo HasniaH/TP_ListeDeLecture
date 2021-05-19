@@ -15,15 +15,13 @@ app.get('/api/pieces', (requete, reponse) => {
 });
 
 
+
 app.get('/api/pieces/:id', (requete, reponse) => {
-    reponse.status(200).json(pieces);
-});
-app.get('/api/pieces/:id', (requete, reponse) => {
-    const idPiece= requete.params.id;
+    const idPiece = requete.params.id;
     console.log(idPiece);
-    const ObjectId  = require('mongodb').ObjectID;
+    const ObjectId = require('mongodb').ObjectID;
     UtiliserDB(async (db) => {
-        const infoPiece = await db.collection('pieces').findOne({_id:ObjectId(idPiece)});
+        const infoPiece = await db.collection('pieces').findOne({ _id: ObjectId(idPiece) });
         reponse.status(200).json(infoPiece);
     }, reponse)
 });
