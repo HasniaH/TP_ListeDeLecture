@@ -12,9 +12,9 @@ const pieces = {
 
 app.get('/api/pieces', (requete, reponse) => {
     UtiliserDB(async (db) => {
-    const infoPieces = await db.collection('pieces').findOne({});
-    reponse.status(200).json(infoPieces);
-}, reponse)
+        const infoPieces = await db.collection('pieces').findOne({});
+        reponse.status(200).json(infoPieces);
+    }, reponse)
 });
 
 app.get('/api/pieces/:id', (requete, reponse) => {
