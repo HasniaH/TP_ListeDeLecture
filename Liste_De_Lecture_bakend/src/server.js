@@ -13,9 +13,8 @@ const pieces = {
 app.get('/api/pieces', (requete, reponse) => {
     reponse.status(200).json(pieces);
 });
-app.get('/api/pieces/TestTest', (requete, reponse) => {
-    reponse.status(200).json(pieces);
-});
+
+
 app.get('/api/pieces/:id', (requete, reponse) => {
     reponse.status(200).json(pieces);
 });
