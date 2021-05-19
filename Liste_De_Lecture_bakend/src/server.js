@@ -14,11 +14,6 @@ app.get('/api/pieces', (requete, reponse) => {
     reponse.status(200).json(pieces);
 });
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> ace908211e0380b0aa5e24fc22b960018df0a810
 app.get('/api/pieces/:id', (requete, reponse) => {
     const idPiece = requete.params.id;
     console.log(idPiece);
