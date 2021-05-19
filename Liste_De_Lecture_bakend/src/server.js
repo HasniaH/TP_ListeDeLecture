@@ -6,14 +6,13 @@ const pieces = {
     'piece1':'p1',
     'piece2':'p2',
     'piece3':'p3'
-    },
-    
-    'Category2': {
-        'piece4':'p4',
-        'piece5':'p5'
     }
+      
 }
+
 app.get('/api/pieces', (requete, reponse) => {
     reponse.status(200).json(pieces);
 });
+
+
 app.listen(8000,()=>console.log('Ecoute le port 8000'));
