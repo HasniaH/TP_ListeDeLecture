@@ -87,4 +87,27 @@ app.post('/api/pieces/ajouter', (requete, reponse) => {
     }
 });
 
+app.post('/api/pieces/:id/modifier', (requete, reponse) => { //à completer
+    const {ObjectId, titre, artiste, categories} = requete.body;
+    console.log(requete.body);
+    if(ObjectId !== undefined && titre !== undefined && artiste !== undefined && categories !== undefined) {
+        UtiliserDB (async (db) => {    
+          await db.collection('pieces').insertOne({
+            titre: titre,
+            artiste: artiste,
+            categories: categories
+          });
+          reponse.status(200).send('piece ajouté');    
+        } , reponse).catch(
+           () =>reponse.status(500).send("Erreur : la piece n'a pas été ajouté")
+        );
+    }
+    else {
+        reponse.status(500).send(`Certains paramètres ne sont pas définis:
+        - titre: ${titre},
+        - artiste: ${artiste},
+        - categories: ${categories}`);
+    }
+});
+
 app.listen(8000, () => console.log('Ecoute le port 8000'));
