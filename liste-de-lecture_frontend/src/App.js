@@ -7,6 +7,7 @@ import PageRepertoire from './Pages/PageRepertoire';
 import PageAcceuil from './Pages/PageAcceuil';
 import PageCategories from './Pages/PageCategories';
 import BarreNavigation from './navigation/BarreNavigation';
+import Ajouter from './Pages/Ajouter';
 
 function App() {
   return (
