@@ -22,6 +22,9 @@ function BarreNavigation() {
                     <LinkContainer to="/categories" exact>
                         <Nav.Link>Catégories</Nav.Link>
                     </LinkContainer>
+                    <LinkContainer to="/ajouter-piece">
+                    <Nav.Link> Ajout Piece </Nav.Link>
+                </LinkContainer>  
                 </Nav>
             </Navbar.Collapse>
             <Form className="d-flex justify-content-end">
