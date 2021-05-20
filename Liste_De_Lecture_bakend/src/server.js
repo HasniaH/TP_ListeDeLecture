@@ -33,6 +33,37 @@ app.get('/api/pieces/:id', (requete, reponse) => {
     }, reponse)
 });
 
+
+
+app.get('/api/categories', (requete, reponse) => {
+    const categorie = requete.params.categorie;
+      
+    UtiliserDB(async (db) => {
+        const listeCategories = await db.collection('pieces').find();
+        reponse.status(200).json(listeCategories);
+    }, reponse)
+});
+
+app.post('/api/categories/ajouter', (requete, reponse) => {
+    const categorie = requete.body;
+    console.log(requete.body);
+    if(categorie !== undefined) {
+        UtiliserDB (async (db) => {    
+          await db.collection('pieces').insertOne({           
+            categorie: categorie
+          });
+          reponse.status(200).send('categorie ajouté');    
+        } , reponse).catch(
+           () =>reponse.status(500).send("Erreur : la categorie n'a pas été ajouté")
+        );
+    }
+    else {
+        reponse.status(500).send(`Le paramètre catégorie n'est pas défini:
+
+        - categorie: ${categorie}`);
+    }
+});
+
 app.post('/api/pieces/ajouter', (requete, reponse) => {
     const {titre, artiste, categories} = requete.body;
     console.log(requete.body);
@@ -55,16 +86,5 @@ app.post('/api/pieces/ajouter', (requete, reponse) => {
         - categories: ${categories}`);
     }
 });
-
-app.get('/api/categories', (requete, reponse) => {
-    const categorie = requete.params.categorie;
-      
-    UtiliserDB(async (db) => {
-        const listeCategories = await db.collection('pieces').find();
-        reponse.status(200).json(listeCategories);
-    }, reponse)
-});
-
-
 
 app.listen(8000, () => console.log('Ecoute le port 8000'));
