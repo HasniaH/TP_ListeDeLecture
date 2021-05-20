@@ -55,4 +55,16 @@ app.post('/api/pieces/ajouter', (requete, reponse) => {
         - categories: ${categories}`);
     }
 });
+
+app.get('/api/categories', (requete, reponse) => {
+    const categorie = requete.params.categorie;
+      
+    UtiliserDB(async (db) => {
+        const listeCategories = await db.collection('pieces').find();
+        reponse.status(200).json(listeCategories);
+    }, reponse)
+});
+
+
+
 app.listen(8000, () => console.log('Ecoute le port 8000'));
