@@ -25,13 +25,14 @@ app.get('/api/pieces', (requete, reponse) => {
 
 app.get('/api/pieces/:id', (requete, reponse) => {
     const idPiece = requete.params.id;
-    console.log(idPiece);
-    const ObjectId = require('mongodb').ObjectID;
+    console.log(idPiece);   
     UtiliserDB(async (db) => {
+        var ObjectId = require('mongodb').ObjectID;
         const infoPiece = await db.collection('pieces').findOne({ _id: ObjectId(idPiece) });
         reponse.status(200).json(infoPiece);
     }, reponse)
 });
+
 app.post('/api/pieces/ajouter', (requete, reponse) => {
     const {titre, artiste, categories} = requete.body;
     console.log(requete.body);
