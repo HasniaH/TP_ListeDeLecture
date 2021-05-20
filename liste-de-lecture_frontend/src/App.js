@@ -1,15 +1,23 @@
 
 import './App.css';
-import  PageAccueil from './Pages/PageAccueil'
-import {BrowserRouter as Router,Link, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
+import PageRepertoire from './Pages/PageRepertoire';
+import PageAcceuil from './Pages/PageAcceuil';
+import PageCategories from './Pages/PageCategories';
+import BarreNavigation from './navigation/BarreNavigation';
+
 
 
 function App() {
   return (
     <Router>
       <Container>
-         < Route path="/" component={ PageAccueil} exact/>
+        <BarreNavigation />
+        < Route path="/" component={PageAcceuil} exact />
+        < Route path="/repertoire" component={PageRepertoire} exact />
+        < Route path="/categories" component={PageCategories} exact />
       </Container>
     </Router>
   );
