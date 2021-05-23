@@ -17,7 +17,7 @@ function App() {
         < Route path="/" component={PageAcceuil} exact />
         < Route path="/repertoire" component={PageRepertoire} exact />
         < Route path="/categories" component={PageCategories} exact />
-        < Route path="/ajouter-piece" component={Ajouter} exact/>
+        < Route path="/ajouter-piece" component={Ajouter} exact />
       </Container>
     </Router>
   );
