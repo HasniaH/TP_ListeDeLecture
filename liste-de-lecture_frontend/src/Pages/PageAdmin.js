@@ -1,7 +1,9 @@
 import { React, useState, useEffect } from 'react';
-import ListePieces from '../composants/ListePieces';
+import ListePiecesAdmin from '../composants/ListePiecesAdmin';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
-function PageRepertoire() {
+function PageAdmin() {
     const [listePieces, setListePieces] = useState([]);
 
     useEffect(() => {
@@ -15,9 +17,16 @@ function PageRepertoire() {
 
     return (
         <>
-            <h1>Liste du répertoire</h1>
-            <ListePieces pieces={listePieces} />
+            <h1>Page administrateur</h1>
+
+            <Link to="/ajouter">
+                <Button>Ajouter une nouvelle pièce</Button>
+            </Link>
+
+            <h2>Liste du répertoire</h2>
+            <ListePiecesAdmin pieces={listePieces} />
         </>
     );
 }
-export default PageRepertoire;
+
+export default PageAdmin;

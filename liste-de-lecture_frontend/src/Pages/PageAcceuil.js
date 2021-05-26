@@ -3,15 +3,14 @@ import React from 'react'
 function PageAcceuil() {
     return (
         <>
-            <h1>Description</h1>
-            <p>
-                Les musiciens et les chanteurs jouent ou chantent dans des orchestres,
-                des chorales, des compagnies d'opéra et des formations musicales populaires,
-                dans des établissements tels que des salles de concert, des bars-salons et des théâtres,
-                dans des productions cinématographiques, à la télévision et dans des studios d'enregistrement.
-                Ce groupe de base inclut également les professeurs de musique qui enseignent habituellement
-                dans des conservatoires, des académies et des maisons privées.
-            </p>
+            <h1>Page accueil</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec felis et mauris tristique ornare. Proin ante diam, aliquam ac libero vitae,
+            finibus fermentum est. Quisque metus neque, vestibulum quis ante vulputate, elementum blandit arcu. Quisque ut magna mi. Nulla fringilla auctor commodo. Sed
+            condimentum ipsum purus, eu efficitur lorem interdum molestie. Nam posuere augue magna, eget varius quam pulvinar ac. Etiam eget eros ultrices
+             tellus condimentum sollicitudin.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec felis et mauris tristique ornare. Proin ante diam, aliquam ac libero vitae, finibus
+            fermentum est. Quisque metus neque, vestibulum quis ante vulputate, elementum blandit arcu. Quisque ut magna mi. Nulla fringilla auctor commodo. Sed
+             condimentum ipsum purus, eu efficitur lorem interdum molestie. Nam posuere augue magna, eget varius quam pulvinar ac. Etiam eget eros ultrices tellus condimentum sollicitudin.</p>
         </>
     )
 } export default PageAcceuil
