@@ -1,4 +1,8 @@
-import { useState } from 'react';
+import {
+    React,
+    useState
+} from 'react';
+
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
@@ -10,7 +14,7 @@ function FormulaireAjouterPiece({ id }) {
     const [rediriger, setRediriger] = useState(false);
 
     const envoyerFormulaire = async () => {
-        await fetch('/api/pieces/ajouter', {
+        await fetch(`/api/pieces/ajouter`, {
             method: 'put',
             body: JSON.stringify({ titre, artiste, categorie }),
             headers: {
@@ -48,7 +52,7 @@ function FormulaireAjouterPiece({ id }) {
                         onChange={(event) => setCategorie(event.target.value)} />
                 </Form.Group>
 
-                <Button variant="primary" onClick={envoyerFormulaire} >
+                <Button className="mt-2" variant="primary" onClick={envoyerFormulaire} >
                     Ajouter
             </Button>
             </Form>

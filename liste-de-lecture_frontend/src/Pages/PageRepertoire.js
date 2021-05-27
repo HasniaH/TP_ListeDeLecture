@@ -1,4 +1,10 @@
-import { React, useState, useEffect } from 'react';
+
+import {
+    React,
+    useState,
+    useEffect
+} from 'react';
+
 import ListePieces from '../composants/ListePieces';
 
 function PageRepertoire() {
@@ -20,4 +26,5 @@ function PageRepertoire() {
         </>
     );
 }
+
 export default PageRepertoire;

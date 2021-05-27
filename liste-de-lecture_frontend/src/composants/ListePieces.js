@@ -3,7 +3,7 @@ import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
-function ListePiecesAdmin({ pieces }) {
+function ListePieces({ pieces, estAdmin }) {
     if (pieces?.length) {
         var dictionnaireCategories = Object();
 
@@ -26,13 +26,17 @@ function ListePiecesAdmin({ pieces }) {
                                 {
                                     piecesAssociees.map(piece =>
                                         <li key={piece._id}>{piece.titre} - {piece.artiste}
-                                            <Link to={`/modifier/${piece._id}`}>
-                                                <Button variant="success" className="m-1" size="sm" >Modifier</Button>
-                                            </Link>
-                                            <Link to={`/supprimer/${piece._id}`}>
-                                                <Button variant="danger" className="m-1" size="sm" >Supprimer</Button>
-                                            </Link>
-                                        </li>)
+                                            {estAdmin === true ?
+                                                <>
+                                                    <Link to={`/modifier/${piece._id}`}>
+                                                        <Button variant="success" className="m-1" size="sm" >Modifier</Button>
+                                                    </Link>
+                                                    <Link to={`/supprimer/${piece._id}`}>
+                                                        <Button variant="danger" className="m-1" size="sm" >Supprimer</Button>
+                                                    </Link>
+                                                </> : undefined}
+                                        </li>
+                                    )
                                 }
                             </ul>
                         </div>
@@ -46,4 +50,4 @@ function ListePiecesAdmin({ pieces }) {
     }
 }
 
-export default ListePiecesAdmin;
+export default ListePieces;

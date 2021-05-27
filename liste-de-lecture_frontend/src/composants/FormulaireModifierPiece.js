@@ -1,4 +1,9 @@
-import { useState, useEffect } from 'react';
+import {
+    React,
+    useState,
+    useEffect
+} from 'react';
+
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
@@ -59,7 +64,7 @@ function FormulaireModifierPiece({ id }) {
                         onChange={(event) => setCategorie(event.target.value)} />
                 </Form.Group>
 
-                <Button variant="success" onClick={envoyerFormulaire} >
+                <Button className={'mt-2'} variant="success" onClick={envoyerFormulaire} >
                     Modifier
             </Button>
             </Form>

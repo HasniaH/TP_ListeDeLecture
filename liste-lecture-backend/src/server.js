@@ -5,29 +5,33 @@ const app = express();
 
 app.use(express.json());
 
-const UtiliserDB = async (operations, reponse) => {
+const utiliserDB = async (operations, reponse) => {
     try {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
-        const db = client.db('Tp_ListeDeLecture');
+        const db = client.db('liste-repertoire');
+
         await operations(db);
+
         client.close();
     }
     catch (erreur) {
-        reponse.status(500).send("Erreur de connection à la  bases de données  ", erreur);
+        reponse.status(500).send("Erreur de connexion à la bd", erreur);
     }
-}
+};
+
 app.get('/api/pieces', (requete, reponse) => {
-    UtiliserDB(async (db) => {
+    utiliserDB(async (db) => {
         const listePieces = await db.collection('pieces').find().toArray();
         reponse.status(200).json(listePieces);
     }, reponse).catch(
         () => reponse.status(500).send("Erreur lors de la requête")
     );;
 });
+
 app.get('/api/pieces/:id', (requete, reponse) => {
     const id = requete.params.id;
 
-    UtiliserDB(async (db) => {
+    utiliserDB(async (db) => {
         var objectId = ObjectID.createFromHexString(id);
         const infoPiece = await db.collection('pieces').findOne({ _id: objectId });
         reponse.status(200).json(infoPiece);
@@ -40,7 +44,7 @@ app.put('/api/pieces/ajouter', (requete, reponse) => {
     const { titre, artiste, categorie } = requete.body;
 
     if (titre !== undefined && artiste !== undefined && categorie !== undefined) {
-        UtiliserDB(async (db) => {
+        utiliserDB(async (db) => {
             await db.collection('pieces').insertOne({
                 titre: titre,
                 artiste: artiste,
@@ -65,7 +69,7 @@ app.post('/api/pieces/modifier/:id', (requete, reponse) => {
     const id = requete.params.id;
 
     if (titre !== undefined && artiste !== undefined && categorie !== undefined) {
-        UtiliserDB(async (db) => {
+        utiliserDB(async (db) => {
             var objectId = ObjectID.createFromHexString(id);
             await db.collection('pieces').updateOne({ _id: objectId }, {
                 '$set': {
@@ -91,7 +95,7 @@ app.post('/api/pieces/modifier/:id', (requete, reponse) => {
 app.delete('/api/pieces/supprimer/:id', (requete, reponse) => {
     const id = requete.params.id;
 
-    UtiliserDB(async (db) => {
+    utiliserDB(async (db) => {
         var objectId = ObjectID.createFromHexString(id);
         const resultat = await db.collection('pieces').deleteOne({ _id: objectId });
 
@@ -101,4 +105,4 @@ app.delete('/api/pieces/supprimer/:id', (requete, reponse) => {
     );
 });
 
-app.listen(8000, () => console.log('Ecoute le port 8000'));
+app.listen(8000, () => console.log("Serveur démarré sur le port 8000"));
