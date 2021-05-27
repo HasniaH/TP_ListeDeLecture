@@ -8,7 +8,7 @@ app.use(express.json());
 const utiliserDB = async (operations, reponse) => {
     try {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
-        const db = client.db('liste-repertoire');
+        const db = client.db('Tp_ListeDeLecture');
 
         await operations(db);
 
